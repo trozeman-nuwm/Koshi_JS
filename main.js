@@ -6,6 +6,7 @@ function setup() {
     createCanvas(W, H);
     fill(0);
     border();
+    grid();
     worker = new Worker();
 
     fill(200, 0, 0);
@@ -30,6 +31,22 @@ function border() {
     line(0, H, 0, 0);
 }
 
+
+function grid() {
+    line(20, H - 20, 20,  20);
+    line(20, H - 20, W - 20,  H - 20);
+    for(let i = 0; i < 11; i++){
+        text(i, 25,   (H - 100 * i) - 5);
+        if(i !== 0){
+            line(20,   H - 100 * i, 50,  H - 100 * i);
+            line(20 +  i * ((W - 40) / 10), H - 20, 20 +  i * ((W - 40) / 10), H - 40); 
+            text(i, i * ((W - 40) / 10)  + 15,   H - 5);
+        }
+        else{
+            ellipse(21, H - 21, 8);
+        }
+    }
+}
 
 class Worker {
     xPoints = [];
